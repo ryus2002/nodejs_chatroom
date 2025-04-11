@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let peer = null;
   let currentCall = null;
   let isInCall = false;
+  let currentRoom = null; // 添加當前房間變量
   
   // 獲取 Socket.io 實例
   const socket = io();
@@ -28,12 +29,33 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   };
   
+  // 從 chat.js 獲取當前房間信息
+  function getCurrentRoomFromChat() {
+    // 如果 window.chatApp 存在且定義了 currentRoom
+    if (window.chatApp && window.chatApp.currentRoom) {
+      return window.chatApp.currentRoom;
+    }
+    
+    // 否則從 localStorage 嘗試獲取
+    const storedRoom = localStorage.getItem('currentRoom');
+    if (storedRoom) {
+      return storedRoom;
+    }
+    
+    // 默認返回 'general'
+    return 'general';
+  }
+  
   // 初始化視訊通話按鈕
   videoCallBtn.addEventListener('click', () => {
     if (isInCall) {
       alert('您已經在通話中');
       return;
     }
+    
+    // 獲取當前房間
+    currentRoom = getCurrentRoomFromChat();
+    console.log('嘗試在房間獲取在線用戶:', currentRoom);
     
     // 獲取在線用戶列表
     socket.emit('get online users', {
@@ -43,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // 處理在線用戶列表
   socket.on('online users', (data) => {
-    if (data.users.length <= 1) {
+    if (!data.users || data.users.length <= 1) {
       alert('目前沒有其他用戶在線');
       return;
     }
