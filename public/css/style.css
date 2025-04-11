@@ -1,0 +1,262 @@
+/* 基本樣式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Microsoft JhengHei', Arial, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* 聊天容器樣式 */
+.chat-container {
+  width: 100%;
+  max-width: 800px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* 聊天頭部樣式 */
+.chat-header {
+  background-color: #4a89dc;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info span {
+  margin-right: 10px;
+}
+
+#video-call-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+#video-call-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 房間選擇樣式 */
+.room-selection {
+  padding: 20px;
+}
+
+.room-selection h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #4a89dc;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #3a70c0;
+}
+
+#generate-key {
+  margin-top: 5px;
+  background-color: #5cb85c;
+}
+
+#generate-key:hover {
+  background-color: #4cae4c;
+}
+
+/* 聊天區域樣式 */
+.chat-area {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+
+.messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #e6e6e6;
+  max-width: 80%;
+}
+
+.message.self {
+  background-color: #dcf8c6;
+  margin-left: auto;
+}
+
+.message .sender {
+  font-weight: bold;
+  color: #333;
+  margin-right: 5px;
+}
+
+.message .content {
+  word-break: break-word;
+}
+
+.message .timestamp {
+  font-size: 0.75rem;
+  color: #888;
+  display: block;
+  text-align: right;
+  margin-top: 5px;
+}
+
+#message-form {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+#message-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.encryption-status {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.encryption-status span {
+  margin-right: 5px;
+}
+
+/* 視訊聊天樣式 */
+.video-chat {
+  padding: 20px;
+}
+
+.video-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.video-item {
+  width: 48%;
+  position: relative;
+}
+
+.video-item video {
+  width: 100%;
+  height: 240px;
+  background-color: #000;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.video-label {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+}
+
+.video-controls {
+  display: flex;
+  justify-content: center;
+}
+
+#end-call {
+  background-color: #dc3545;
+}
+
+#end-call:hover {
+  background-color: #c82333;
+}
+
+/* 響應式設計 */
+@media (max-width: 600px) {
+  .chat-container {
+    height: 100vh;
+    border-radius: 0;
+  }
+  
+  .chat-area {
+    height: calc(100vh - 60px);
+  }
+  
+  .video-container {
+    flex-direction: column;
+  }
+  
+  .video-item {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

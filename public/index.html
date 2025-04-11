@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>即時聊天室</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- 確保 CryptoJS 在我們的自定義腳本之前加載 -->
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h1>即時聊天室</h1>
+      <div class="user-info">
+        <span id="username-display"></span>
+        <button id="video-call-btn" title="開始視訊通話">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <div class="room-selection" id="room-selection">
+      <h2>加入聊天室</h2>
+      <form id="join-form">
+        <div class="form-group">
+          <label for="username">您的名稱:</label>
+          <input type="text" id="username" required>
+        </div>
+        <div class="form-group">
+          <label for="room">選擇房間:</label>
+          <select id="room">
+            <option value="general">一般聊天</option>
+            <option value="tech">技術討論</option>
+            <option value="random">隨意聊天</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="encryption-key">加密金鑰 (選填):</label>
+          <input type="password" id="encryption-key" placeholder="留空使用預設金鑰">
+          <button type="button" id="generate-key">生成隨機金鑰</button>
+        </div>
+        <button type="submit">加入聊天</button>
+      </form>
+    </div>
+
+    <div class="chat-area" id="chat-area" style="display: none;">
+      <div class="messages" id="messages"></div>
+      <form id="message-form">
+        <input type="text" id="message-input" placeholder="輸入訊息..." autocomplete="off">
+        <button type="submit">發送</button>
+      </form>
+      <div class="encryption-status">
+        <span id="encryption-status-icon">🔒</span>
+        <span id="encryption-status-text">端到端加密已啟用</span>
+      </div>
+    </div>
+    
+    <div class="video-chat" id="video-chat" style="display: none;">
+      <div class="video-container">
+        <div class="video-item">
+          <video id="local-video" autoplay muted></video>
+          <div class="video-label">您</div>
+        </div>
+        <div class="video-item">
+          <video id="remote-video" autoplay></video>
+          <div class="video-label" id="remote-user-name">對方</div>
+        </div>
+      </div>
+      <div class="video-controls">
+        <button id="end-call">結束通話</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 載入腳本，注意順序 -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simple-peer@9.11.1/simplepeer.min.js"></script>
+  <script src="/js/encryption.js"></script>
+  <script src="/js/chat.js"></script>
+  <script src="/js/video-chat.js"></script>
+  
+  <!-- 添加調試信息 -->
+  <script>
+    console.log('頁面已完全載入');
+    // 添加全局錯誤處理
+    window.addEventListener('error', function(e) {
+      console.error('全局錯誤:', e.message, 'at', e.filename, ':', e.lineno);
+    });
+  </script>
+</body>
+</html>

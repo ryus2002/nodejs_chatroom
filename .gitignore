@@ -1,0 +1,27 @@
+# 依賴目錄
+node_modules/
+
+# 環境變數
+.env
+
+# 日誌文件
+*.log
+npm-debug.log*
+
+# 運行時數據
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Docker 相關
+docker-volumes/
+
+# 編譯輸出
+dist/
+build/
+
+# 其他
+.tmp/
+.cache/
