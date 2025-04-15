@@ -232,3 +232,9 @@ npm start
 這個新版本的 README.md 更加專注於 Docker 執行方式，同時保留了傳統方式的說明，並特別針對 Windows 環境增加了更多細節和故障排除指南。文件結構也更加清晰，讓使用者可以根據自己的需求選擇最適合的執行方式。
 
 您可以將此內容複製到一個新的 README.md 文件中，替換原有的文件。
+
+## Demo畫面
+![image](https://github.com/user-attachments/assets/d8d95a3f-4284-4936-ab4c-05e073eaf77a)
+![image](https://github.com/user-attachments/assets/c05c06f2-c58e-4680-967e-324f4d4dd244)
+![image](https://github.com/user-attachments/assets/27727363-278d-4721-9918-1bf99662871d)
+
